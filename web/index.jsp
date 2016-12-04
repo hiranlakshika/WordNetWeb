@@ -1,9 +1,10 @@
-
+<%@ page import="database.DBConnection" %>
+<%@ page import="morphology.WordsGenerator" %>
 <%@ page import="java.sql.Connection" %>
 <%@ page import="java.sql.ResultSet" %>
 <%@ page import="java.sql.SQLException" %>
 <%@ page import="java.sql.Statement" %>
-<%@ page import="database.DBConnection" %><%--
+<%--
   Created by IntelliJ IDEA.
   User: hiran
   Date: 11/29/16
@@ -21,9 +22,9 @@
 <form action="index.jsp">
     <div class="container">
         <div class="row">
-            <h2>Search any Sinhala word here</h2>
+            <h3>ඔබ සොයන වචනය මෙහි ඇතුලත් කරන්න </h3>
             <div id="custom-search-input">
-                <div class="input-group col-md-12">
+                <div class="input-group col-md-6">
                     <input type="text" name="search" class="  search-query form-control" placeholder="Search"/>
                     <span class="input-group-btn">
                                     <button class="btn btn-danger" type="submit">
@@ -34,23 +35,72 @@
             </div>
         </div>
     </div>
-
 </form>
+
+<%--<div class="form-group col-md-4">
+    <label for="baseform">වචනයේ මූලික ස්වරූපය:</label>
+    <input type="text" class="form-control" id="baseform"
+           value="<%WordsGenerator.generateWord(request.getParameter("search"));%>">
+</div>
+
+<div class="form-group col-md-12">
+    <label for="sentence">උදාහරණ වාක්‍ය:</label>
+    <textarea class="form-control" rows="10" id="sentence">
+        <%
+            String word = request.getParameter("search");
+            if (word != null && word.length() > 1) {
+                String sql = "SELECT * FROM `sentence` WHERE text like '" + "%" + word + "%" + "'";
+
+                try {
+                    Connection connection = DBConnection.getConnection();
+                    Statement stm = connection.createStatement();
+                    ResultSet rst = stm.executeQuery(sql);
+                    while (rst.next()) {
+                        if (rst.getString("text").length() < 150) {
+                            out.println(rst.getString("text") + ".");
+                        }
+                    }
+                } catch (SQLException | ClassNotFoundException | ArrayIndexOutOfBoundsException ex) {
+                    ex.printStackTrace();
+                } finally {
+                    out.close();
+                }
+            }
+        %>
+    </textarea>
+</div>--%>
+
 <%
     String word = request.getParameter("search");
     if (word != null && word.length() > 1) {
+        String baseWord = WordsGenerator.generateWord(word);
+
+        out.print("<div class=\"form-group col-md-4\">\n" +
+                "    <label for=\"baseform\">වචනයේ මූලික ස්වරූපය:</label>\n" +
+                "    <input type=\"text\" class=\"form-control\" id=\"baseform\" value=\"" + baseWord + "\">\n" +
+                "</div>");
+
         String sql = "SELECT * FROM `sentence` WHERE text like '" + "%" + word + "%" + "'";
 
         try {
             Connection connection = DBConnection.getConnection();
             Statement stm = connection.createStatement();
             ResultSet rst = stm.executeQuery(sql);
+            out.print("<div class=\"form-group col-md-12\">\n" +
+                    "    <label for=\"sentence\">උදාහරණ වාක්\u200Dය:</label>\n" +
+                    "    <textarea class=\"form-control\" rows=\"10\" id=\"sentence\">");
+            int count = 0;
             while (rst.next()) {
-                if (rst.getString("text").length()<150){
-                    out.print(rst.getString("text")+"<br>");
+                ++count;
+                if (count > 15) {
+                    break;
                 }
-
+                if (rst.getString("text").length() < 150 && !rst.getString("text").trim().isEmpty()) {
+                    out.println(rst.getString("text") + ".");
+                }
             }
+            out.print("</textarea>\n" +
+                    "</div>");
         } catch (SQLException | ClassNotFoundException | ArrayIndexOutOfBoundsException ex) {
             ex.printStackTrace();
         } finally {

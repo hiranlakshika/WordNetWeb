@@ -17,7 +17,7 @@ public class WordsGenerator {
      * @throws IndexOutOfBoundsException the index out of bounds exception
      */
     public static String generateWord(String word) throws IndexOutOfBoundsException {
-        if (word != null) {
+        if (word != null && word.length() >= 2) {
             word = word.replaceAll("[ ]", "");
             List<String> wordArray = new ArrayList<>(Arrays.asList(word.split("")));
             if (wordArray.size() > 2 && wordArray.get(wordArray.size() - 1).toString().equals("ට")) {
@@ -183,6 +183,12 @@ public class WordsGenerator {
         }
     }
 
+    /**
+     * Array list to string string.
+     *
+     * @param list the list
+     * @return the string
+     */
     private static String arrayListToString(List<String> list) {
         StringBuilder sb = new StringBuilder();
         list.forEach(sb::append);
