@@ -1,7 +1,5 @@
 package morphology;
 
-import com.sun.deploy.util.StringUtils;
-
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -19,156 +17,176 @@ public class WordsGenerator {
      * @throws IndexOutOfBoundsException the index out of bounds exception
      */
     public static String generateWord(String word) throws IndexOutOfBoundsException {
-        word = word.replaceAll("[ ]", "");
-        List<String> wordArray = new ArrayList<>(Arrays.asList(word.split("")));
-        if (wordArray.size() > 2 && wordArray.get(wordArray.size() - 1).toString().equals("ට")) {
-            wordArray.remove(wordArray.size() - 1);
-            return StringUtils.join(wordArray, "");
-        } else if ((wordArray.get(wordArray.size() - 2).toString() + wordArray.get(wordArray.size() - 1).toString()).equals("කට")) {
-            wordArray.remove(wordArray.size() - 1);
-            wordArray.remove(wordArray.size() - 1);
-            return StringUtils.join(wordArray, "");
-        } else if (wordArray.size() > 3 && (wordArray.get(wordArray.size() - 3).toString() + wordArray.get(wordArray.size() - 2).toString() + wordArray.get(wordArray.size() - 1).toString()).equals("යන්")) {
-            wordArray.remove(wordArray.size() - 1);
-            wordArray.remove(wordArray.size() - 1);
-            return StringUtils.join(wordArray, "");
-        } else if ((wordArray.get(wordArray.size() - 2).toString() + wordArray.get(wordArray.size() - 1).toString()).equals("ගේ")) {
-            wordArray.remove(wordArray.size() - 1);
-            wordArray.remove(wordArray.size() - 1);
-            return StringUtils.join(wordArray, "");
-        } else if ((wordArray.get(wordArray.size() - 2).toString() + wordArray.get(wordArray.size() - 1).toString()).equals("යේ")) {
-            wordArray.remove(wordArray.size() - 1);
-            return StringUtils.join(wordArray, "");
-        } else if (wordArray.size() > 4 && (wordArray.get(wordArray.size() - 4).toString() + wordArray.get(wordArray.size() - 3).toString() + wordArray.get(wordArray.size() - 2).toString() + wordArray.get(wordArray.size() - 1).toString()).equals("යේදී")) {
-            wordArray.remove(wordArray.size() - 1);
-            wordArray.remove(wordArray.size() - 1);
-            wordArray.remove(wordArray.size() - 1);
-            return StringUtils.join(wordArray, "");
-        } else if (wordArray.size() > 4 && (wordArray.get(wordArray.size() - 4).toString() + wordArray.get(wordArray.size() - 3).toString() + wordArray.get(wordArray.size() - 2).toString() + wordArray.get(wordArray.size() - 1).toString()).equals("න්හි")) {
-            wordArray.remove(wordArray.size() - 1);
-            wordArray.remove(wordArray.size() - 1);
-            wordArray.remove(wordArray.size() - 1);
-            wordArray.remove(wordArray.size() - 1);
-            return StringUtils.join(wordArray, "");
-        } else if (wordArray.size() > 6 && (wordArray.get(wordArray.size() - 6).toString() + wordArray.get(wordArray.size() - 5).toString() + wordArray.get(wordArray.size() - 4).toString() +
-                wordArray.get(wordArray.size() - 3).toString() + wordArray.get(wordArray.size() - 2).toString() + wordArray.get(wordArray.size() - 1).toString()).equals("න්හිදී")) {
-            wordArray.remove(wordArray.size() - 1);
-            wordArray.remove(wordArray.size() - 1);
-            wordArray.remove(wordArray.size() - 1);
-            wordArray.remove(wordArray.size() - 1);
-            wordArray.remove(wordArray.size() - 1);
-            wordArray.remove(wordArray.size() - 1);
-            return StringUtils.join(wordArray, "");
-        } else if (wordArray.size() > 4 && (wordArray.get(wordArray.size() - 4).toString() + wordArray.get(wordArray.size() - 3).toString() + wordArray.get(wordArray.size() - 2).toString() + wordArray.get(wordArray.size() - 1).toString()).equals("වලදී")) {
-            wordArray.remove(wordArray.size() - 1);
-            wordArray.remove(wordArray.size() - 1);
-            wordArray.remove(wordArray.size() - 1);
-            return StringUtils.join(wordArray, "");
-        } else if (wordArray.size() > 3 && (wordArray.get(wordArray.size() - 2).toString() + wordArray.get(wordArray.size() - 1).toString()).equals("වල")) {
-            wordArray.remove(wordArray.size() - 1);
-            wordArray.remove(wordArray.size() - 1);
-            return StringUtils.join(wordArray, "");
-        } else if (wordArray.size() > 5 && (wordArray.get(wordArray.size() - 4).toString() + wordArray.get(wordArray.size() - 3).toString() + wordArray.get(wordArray.size() - 2).toString() + wordArray.get(wordArray.size() - 1).toString()).equals("කුත්")) {
-            if (wordArray.get(wordArray.size() - 5).toString().equals("ෙ")) {
+        if (word != null) {
+            word = word.replaceAll("[ ]", "");
+            List<String> wordArray = new ArrayList<>(Arrays.asList(word.split("")));
+            if (wordArray.size() > 2 && wordArray.get(wordArray.size() - 1).toString().equals("ට")) {
+                wordArray.remove(wordArray.size() - 1);
+                return arrayListToString(wordArray);
+            } else if (wordArray.size() > 5 && (wordArray.get(wordArray.size() - 4).toString() + wordArray.get(wordArray.size() - 3).toString() + wordArray.get(wordArray.size() - 2).toString() + wordArray.get(wordArray.size() - 1).toString()).equals("ගෙන්")) {
+                wordArray.remove(wordArray.size() - 1);
+                wordArray.remove(wordArray.size() - 1);
+                wordArray.remove(wordArray.size() - 1);
+                wordArray.remove(wordArray.size() - 1);
+                return arrayListToString(wordArray);
+            } else if ((wordArray.get(wordArray.size() - 2).toString() + wordArray.get(wordArray.size() - 1).toString()).equals("කට")) {
+                wordArray.remove(wordArray.size() - 1);
+                wordArray.remove(wordArray.size() - 1);
+                return arrayListToString(wordArray);
+            } else if (wordArray.size() > 5 && (wordArray.get(wordArray.size() - 4).toString() + wordArray.get(wordArray.size() - 3).toString() + wordArray.get(wordArray.size() - 2).toString() + wordArray.get(wordArray.size() - 1).toString()).equals("ගෙන්")) {
+                wordArray.remove(wordArray.size() - 1);
+                wordArray.remove(wordArray.size() - 1);
+                wordArray.remove(wordArray.size() - 1);
+                return arrayListToString(wordArray);
+            } else if (wordArray.size() > 3 && (wordArray.get(wordArray.size() - 3).toString() + wordArray.get(wordArray.size() - 2).toString() + wordArray.get(wordArray.size() - 1).toString()).equals("යන්")) {
+                wordArray.remove(wordArray.size() - 1);
+                wordArray.remove(wordArray.size() - 1);
+                return arrayListToString(wordArray);
+            } else if ((wordArray.get(wordArray.size() - 2).toString() + wordArray.get(wordArray.size() - 1).toString()).equals("ගේ")) {
+                wordArray.remove(wordArray.size() - 1);
+                wordArray.remove(wordArray.size() - 1);
+                return arrayListToString(wordArray);
+            } else if ((wordArray.get(wordArray.size() - 2).toString() + wordArray.get(wordArray.size() - 1).toString()).equals("යේ")) {
+                wordArray.remove(wordArray.size() - 1);
+                return arrayListToString(wordArray);
+            } else if (wordArray.size() > 4 && (wordArray.get(wordArray.size() - 4).toString() + wordArray.get(wordArray.size() - 3).toString() + wordArray.get(wordArray.size() - 2).toString() + wordArray.get(wordArray.size() - 1).toString()).equals("යේදී")) {
+                wordArray.remove(wordArray.size() - 1);
+                wordArray.remove(wordArray.size() - 1);
+                wordArray.remove(wordArray.size() - 1);
+                return arrayListToString(wordArray);
+            } else if (wordArray.size() > 4 && (wordArray.get(wordArray.size() - 4).toString() + wordArray.get(wordArray.size() - 3).toString() + wordArray.get(wordArray.size() - 2).toString() + wordArray.get(wordArray.size() - 1).toString()).equals("න්හි")) {
+                wordArray.remove(wordArray.size() - 1);
+                wordArray.remove(wordArray.size() - 1);
+                wordArray.remove(wordArray.size() - 1);
+                wordArray.remove(wordArray.size() - 1);
+                return arrayListToString(wordArray);
+            } else if (wordArray.size() > 6 && (wordArray.get(wordArray.size() - 6).toString() + wordArray.get(wordArray.size() - 5).toString() + wordArray.get(wordArray.size() - 4).toString() +
+                    wordArray.get(wordArray.size() - 3).toString() + wordArray.get(wordArray.size() - 2).toString() + wordArray.get(wordArray.size() - 1).toString()).equals("න්හිදී")) {
                 wordArray.remove(wordArray.size() - 1);
                 wordArray.remove(wordArray.size() - 1);
                 wordArray.remove(wordArray.size() - 1);
                 wordArray.remove(wordArray.size() - 1);
                 wordArray.remove(wordArray.size() - 1);
-                return StringUtils.join(wordArray, "");
-            } else {
+                wordArray.remove(wordArray.size() - 1);
+                return arrayListToString(wordArray);
+            } else if (wordArray.size() > 4 && (wordArray.get(wordArray.size() - 4).toString() + wordArray.get(wordArray.size() - 3).toString() + wordArray.get(wordArray.size() - 2).toString() + wordArray.get(wordArray.size() - 1).toString()).equals("වලදී")) {
                 wordArray.remove(wordArray.size() - 1);
                 wordArray.remove(wordArray.size() - 1);
                 wordArray.remove(wordArray.size() - 1);
+                return arrayListToString(wordArray);
+            } else if (wordArray.size() > 3 && (wordArray.get(wordArray.size() - 2).toString() + wordArray.get(wordArray.size() - 1).toString()).equals("වල")) {
                 wordArray.remove(wordArray.size() - 1);
-                return StringUtils.join(wordArray, "");
-            }
+                wordArray.remove(wordArray.size() - 1);
+                return arrayListToString(wordArray);
+            } else if (wordArray.size() > 5 && (wordArray.get(wordArray.size() - 4).toString() + wordArray.get(wordArray.size() - 3).toString() + wordArray.get(wordArray.size() - 2).toString() + wordArray.get(wordArray.size() - 1).toString()).equals("කුත්")) {
+                if (wordArray.get(wordArray.size() - 5).toString().equals("ෙ")) {
+                    wordArray.remove(wordArray.size() - 1);
+                    wordArray.remove(wordArray.size() - 1);
+                    wordArray.remove(wordArray.size() - 1);
+                    wordArray.remove(wordArray.size() - 1);
+                    wordArray.remove(wordArray.size() - 1);
+                    return arrayListToString(wordArray);
+                } else {
+                    wordArray.remove(wordArray.size() - 1);
+                    wordArray.remove(wordArray.size() - 1);
+                    wordArray.remove(wordArray.size() - 1);
+                    wordArray.remove(wordArray.size() - 1);
+                    return arrayListToString(wordArray);
+                }
 
-        } else if (wordArray.size() > 5 && (wordArray.size() > 4 && (wordArray.get(wordArray.size() - 4).toString() + wordArray.get(wordArray.size() - 3).toString() + wordArray.get(wordArray.size() - 2).toString() +
-                wordArray.get(wordArray.size() - 1).toString()).equals("ගේත්"))) {
-            wordArray.remove(wordArray.size() - 1);
-            wordArray.remove(wordArray.size() - 1);
-            wordArray.remove(wordArray.size() - 1);
-            wordArray.remove(wordArray.size() - 1);
-            return StringUtils.join(wordArray, "");
+            } else if (wordArray.size() > 5 && (wordArray.size() > 4 && (wordArray.get(wordArray.size() - 4).toString() + wordArray.get(wordArray.size() - 3).toString() + wordArray.get(wordArray.size() - 2).toString() +
+                    wordArray.get(wordArray.size() - 1).toString()).equals("ගේත්"))) {
+                wordArray.remove(wordArray.size() - 1);
+                wordArray.remove(wordArray.size() - 1);
+                wordArray.remove(wordArray.size() - 1);
+                wordArray.remove(wordArray.size() - 1);
+                return arrayListToString(wordArray);
 
-        } else if (wordArray.size() > 3 && (wordArray.get(wordArray.size() - 2).toString() + wordArray.get(wordArray.size() - 1).toString()).equals("ත්")) {
-            if (wordArray.get(wordArray.size() - 3).toString().equals("ෙ")) {
+            } else if (wordArray.size() > 3 && (wordArray.get(wordArray.size() - 2).toString() + wordArray.get(wordArray.size() - 1).toString()).equals("ත්")) {
+                if (wordArray.get(wordArray.size() - 3).toString().equals("ෙ")) {
+                    wordArray.remove(wordArray.size() - 1);
+                    wordArray.remove(wordArray.size() - 1);
+                    wordArray.remove(wordArray.size() - 1);
+                    return arrayListToString(wordArray);
+                } else {
+                    wordArray.remove(wordArray.size() - 1);
+                    wordArray.remove(wordArray.size() - 1);
+                    return arrayListToString(wordArray);
+                }
+            } else if (wordArray.size() > 5 && (wordArray.get(wordArray.size() - 3).toString() + wordArray.get(wordArray.size() - 2).toString() + wordArray.get(wordArray.size() - 1).toString()).equals("වලට")) {
                 wordArray.remove(wordArray.size() - 1);
                 wordArray.remove(wordArray.size() - 1);
                 wordArray.remove(wordArray.size() - 1);
-                return StringUtils.join(wordArray, "");
+                return arrayListToString(wordArray);
+            } else if (wordArray.size() > 5 && (wordArray.get(wordArray.size() - 2).toString() + wordArray.get(wordArray.size() - 1).toString()).equals("ක්")) {
+                if (wordArray.get(wordArray.size() - 3).toString().equals("ෙ")) {
+                    wordArray.remove(wordArray.size() - 1);
+                    wordArray.remove(wordArray.size() - 1);
+                    wordArray.remove(wordArray.size() - 1);
+                    return arrayListToString(wordArray);
+                } else {
+                    wordArray.remove(wordArray.size() - 1);
+                    wordArray.remove(wordArray.size() - 1);
+                    return arrayListToString(wordArray);
+                }
+            } else if (wordArray.size() > 4 && (wordArray.get(wordArray.size() - 4).toString() + wordArray.get(wordArray.size() - 3).toString() + wordArray.get(wordArray.size() - 2).toString() + wordArray.get(wordArray.size() - 1).toString()).equals("කින්")) {
+                wordArray.remove(wordArray.size() - 1);
+                wordArray.remove(wordArray.size() - 1);
+                wordArray.remove(wordArray.size() - 1);
+                wordArray.remove(wordArray.size() - 1);
+                return arrayListToString(wordArray);
+            } else if (wordArray.size() > 3 && (wordArray.get(wordArray.size() - 2).toString() + wordArray.get(wordArray.size() - 1).toString()).equals("න්")) {
+                if (wordArray.get(wordArray.size() - 3).toString().equals("ෙ")) {
+                    wordArray.remove(wordArray.size() - 1);
+                    wordArray.remove(wordArray.size() - 1);
+                    wordArray.remove(wordArray.size() - 1);
+                    return arrayListToString(wordArray);
+                } else {
+                    wordArray.remove(wordArray.size() - 1);
+                    wordArray.remove(wordArray.size() - 1);
+                    return arrayListToString(wordArray);
+                }
+            } else if (wordArray.size() > 4 && (wordArray.get(wordArray.size() - 2).toString() + wordArray.get(wordArray.size() - 1).toString()).equals("හි")) {
+                if (wordArray.get(wordArray.size() - 3).toString().equals("ෙ")) {
+                    wordArray.remove(wordArray.size() - 1);
+                    wordArray.remove(wordArray.size() - 1);
+                    wordArray.remove(wordArray.size() - 1);
+                    return arrayListToString(wordArray);
+                } else {
+                    wordArray.remove(wordArray.size() - 1);
+                    wordArray.remove(wordArray.size() - 1);
+                    return arrayListToString(wordArray);
+                }
+            } else if (wordArray.size() > 4 && (wordArray.get(wordArray.size() - 2).toString() + wordArray.get(wordArray.size() - 1).toString()).equals("කි") || (wordArray.get(wordArray.size() - 2).toString() +
+                    wordArray.get(wordArray.size() - 1).toString()).equals("කු")) {
+                if (wordArray.get(wordArray.size() - 3).toString().equals("ෙ")) {
+                    wordArray.remove(wordArray.size() - 1);
+                    wordArray.remove(wordArray.size() - 1);
+                    wordArray.remove(wordArray.size() - 1);
+                    wordArray.add("ා");
+                    return arrayListToString(wordArray);
+                } else {
+                    wordArray.remove(wordArray.size() - 1);
+                    wordArray.remove(wordArray.size() - 1);
+                    return arrayListToString(wordArray);
+                }
+            } else if (wordArray.size() > 5 && (wordArray.get(wordArray.size() - 4).toString() + wordArray.get(wordArray.size() - 3).toString() + wordArray.get(wordArray.size() - 2).toString() + wordArray.get(wordArray.size() - 1).toString()).equals("යෙන්")) {
+                wordArray.remove(wordArray.size() - 1);
+                wordArray.remove(wordArray.size() - 1);
+                wordArray.remove(wordArray.size() - 1);
+                return arrayListToString(wordArray);
             } else {
-                wordArray.remove(wordArray.size() - 1);
-                wordArray.remove(wordArray.size() - 1);
-                return StringUtils.join(wordArray, "");
+                return arrayListToString(wordArray);
             }
-        } else if (wordArray.size() > 5 && (wordArray.get(wordArray.size() - 3).toString() + wordArray.get(wordArray.size() - 2).toString() + wordArray.get(wordArray.size() - 1).toString()).equals("වලට")) {
-            wordArray.remove(wordArray.size() - 1);
-            wordArray.remove(wordArray.size() - 1);
-            wordArray.remove(wordArray.size() - 1);
-            return StringUtils.join(wordArray, "");
-        } else if (wordArray.size() > 5 && (wordArray.get(wordArray.size() - 2).toString() + wordArray.get(wordArray.size() - 1).toString()).equals("ක්")) {
-            if (wordArray.get(wordArray.size() - 3).toString().equals("ෙ")) {
-                wordArray.remove(wordArray.size() - 1);
-                wordArray.remove(wordArray.size() - 1);
-                wordArray.remove(wordArray.size() - 1);
-                return StringUtils.join(wordArray, "");
-            } else {
-                wordArray.remove(wordArray.size() - 1);
-                wordArray.remove(wordArray.size() - 1);
-                return StringUtils.join(wordArray, "");
-            }
-        } else if (wordArray.size() > 4 && (wordArray.get(wordArray.size() - 4).toString() + wordArray.get(wordArray.size() - 3).toString() + wordArray.get(wordArray.size() - 2).toString() + wordArray.get(wordArray.size() - 1).toString()).equals("කින්")) {
-            wordArray.remove(wordArray.size() - 1);
-            wordArray.remove(wordArray.size() - 1);
-            wordArray.remove(wordArray.size() - 1);
-            wordArray.remove(wordArray.size() - 1);
-            return StringUtils.join(wordArray, "");
-        } else if (wordArray.size() > 3 && (wordArray.get(wordArray.size() - 2).toString() + wordArray.get(wordArray.size() - 1).toString()).equals("න්")) {
-            if (wordArray.get(wordArray.size() - 3).toString().equals("ෙ")) {
-                wordArray.remove(wordArray.size() - 1);
-                wordArray.remove(wordArray.size() - 1);
-                wordArray.remove(wordArray.size() - 1);
-                return StringUtils.join(wordArray, "");
-            } else {
-                wordArray.remove(wordArray.size() - 1);
-                wordArray.remove(wordArray.size() - 1);
-                return StringUtils.join(wordArray, "");
-            }
-        } else if (wordArray.size() > 4 && (wordArray.get(wordArray.size() - 2).toString() + wordArray.get(wordArray.size() - 1).toString()).equals("හි")) {
-            if (wordArray.get(wordArray.size() - 3).toString().equals("ෙ")) {
-                wordArray.remove(wordArray.size() - 1);
-                wordArray.remove(wordArray.size() - 1);
-                wordArray.remove(wordArray.size() - 1);
-                return StringUtils.join(wordArray, "");
-            } else {
-                wordArray.remove(wordArray.size() - 1);
-                wordArray.remove(wordArray.size() - 1);
-                return StringUtils.join(wordArray, "");
-            }
-        } else if (wordArray.size() > 4 && (wordArray.get(wordArray.size() - 2).toString() + wordArray.get(wordArray.size() - 1).toString()).equals("කි") || (wordArray.get(wordArray.size() - 2).toString() +
-                wordArray.get(wordArray.size() - 1).toString()).equals("කු")) {
-            if (wordArray.get(wordArray.size() - 3).toString().equals("ෙ")) {
-                wordArray.remove(wordArray.size() - 1);
-                wordArray.remove(wordArray.size() - 1);
-                wordArray.remove(wordArray.size() - 1);
-                wordArray.add("ා");
-                return StringUtils.join(wordArray, "");
-            } else {
-                wordArray.remove(wordArray.size() - 1);
-                wordArray.remove(wordArray.size() - 1);
-                return StringUtils.join(wordArray, "");
-            }
-        } else if (wordArray.size() > 5 && (wordArray.get(wordArray.size() - 4).toString() + wordArray.get(wordArray.size() - 3).toString() + wordArray.get(wordArray.size() - 2).toString() + wordArray.get(wordArray.size() - 1).toString()).equals("යෙන්")) {
-            wordArray.remove(wordArray.size() - 1);
-            wordArray.remove(wordArray.size() - 1);
-            wordArray.remove(wordArray.size() - 1);
-            return StringUtils.join(wordArray, "");
         } else {
-            return StringUtils.join(wordArray, "");
-
+            return "";
         }
+    }
+
+    private static String arrayListToString(List<String> list) {
+        StringBuilder sb = new StringBuilder();
+        list.forEach(sb::append);
+        return sb.toString();
     }
 
     /**
@@ -178,9 +196,10 @@ public class WordsGenerator {
      */
     public static void main(String[] args) {
         try {
-            String input = "හයෙන්";
+            String input = "අම්මගෙන් ";
             input = input.replaceAll("[ ]", "");
-            generateWord(input);
+            System.out.println(generateWord(input));
+            ;
         } catch (IndexOutOfBoundsException e) {
             System.out.println(e.getMessage());
         }
