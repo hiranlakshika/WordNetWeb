@@ -30,13 +30,14 @@
 <div class="menu">
     <div class="container-fluid">
         <div class="navbar-header">
-            <a href="#">Sinhala WordNet</a>
+            <a href="index.jsp">Sinhala WordNet</a>
         </div>
         <div>
             <ul class="nav navbar-nav navbar-left">
-                <li><a href="#"><span class="glyphicon glyphicon-home"></span> Home</a></li>
-                <li><a href="#"><span class="glyphicon glyphicon-hand-up"></span> Suggestions</a></li>
-                <li><a href="#"><span class="glyphicon glyphicon-info-sign"></span> About</a></li>
+                <li><a href="index.jsp"><span class="glyphicon glyphicon-home"></span> Home</a></li>
+                <li><a href="suggestions.jsp"><span class="glyphicon glyphicon-hand-up"></span> Suggestions</a></li>
+                <li><a href="about.html"><span class="glyphicon glyphicon-info-sign"></span> About</a></li>
+                <li><a href="references.html"><span class="glyphicon glyphicon-tags"></span> References</a></li>
             </ul>
         </div>
     </div>
