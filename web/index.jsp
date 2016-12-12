@@ -17,6 +17,7 @@
     <title>Sinhala WordNet</title>
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <link href="css/searchbar.css" rel="stylesheet">
+    <link href="css/navbar.css" rel="stylesheet">
     <style type="text/css">
         .highlight {
             color: #000;
@@ -24,7 +25,25 @@
         }
     </style>
 </head>
-<body>
+<body onload="highlightText()">
+
+<div class="menu">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <a href="#">Sinhala WordNet</a>
+        </div>
+        <div>
+            <ul class="nav navbar-nav navbar-left">
+                <li><a href="#"><span class="glyphicon glyphicon-home"></span> Home</a></li>
+                <li><a href="#"><span class="glyphicon glyphicon-hand-up"></span> Suggestions</a></li>
+                <li><a href="#"><span class="glyphicon glyphicon-info-sign"></span> About</a></li>
+            </ul>
+        </div>
+    </div>
+</div>
+<br>
+<br>
+<br>
 <form action="index.jsp">
 
     <div class="container">
@@ -43,7 +62,6 @@
         </div>
     </div>
 </form>
-
 <%
     String word = request.getParameter("search");
     if (word != null && word.length() > 1) {
@@ -87,11 +105,13 @@
 <script src="jquery/jquery.highlight-search-terms.min.js"></script>
 
 <script>
-    $(function () {
-        $("body").highlightSearchTerms({
-            referrer: "http://www.google.com/search?q=වචනය"
+    function highlightText() {
+        $(function () {
+            $("body").highlightSearchTerms({
+                referrer: "http://www.google.com/search?q=වචනය"
+            });
         });
-    });
+    }
 </script>
 </body>
 </html>
