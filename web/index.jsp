@@ -17,9 +17,16 @@
     <title>Sinhala WordNet</title>
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <link href="css/searchbar.css" rel="stylesheet">
+    <style type="text/css">
+        .highlight {
+            color: #000;
+            background-color: #ff0;
+        }
+    </style>
 </head>
 <body>
 <form action="index.jsp">
+
     <div class="container">
         <div class="row">
             <h3>ඔබ සොයන වචනය මෙහි ඇතුලත් කරන්න </h3>
@@ -36,39 +43,6 @@
         </div>
     </div>
 </form>
-
-<%--<div class="form-group col-md-4">
-    <label for="baseform">වචනයේ මූලික ස්වරූපය:</label>
-    <input type="text" class="form-control" id="baseform"
-           value="<%WordsGenerator.generateWord(request.getParameter("search"));%>">
-</div>
-
-<div class="form-group col-md-12">
-    <label for="sentence">උදාහරණ වාක්‍ය:</label>
-    <textarea class="form-control" rows="10" id="sentence">
-        <%
-            String word = request.getParameter("search");
-            if (word != null && word.length() > 1) {
-                String sql = "SELECT * FROM `sentence` WHERE text like '" + "%" + word + "%" + "'";
-
-                try {
-                    Connection connection = DBConnection.getConnection();
-                    Statement stm = connection.createStatement();
-                    ResultSet rst = stm.executeQuery(sql);
-                    while (rst.next()) {
-                        if (rst.getString("text").length() < 150) {
-                            out.println(rst.getString("text") + ".");
-                        }
-                    }
-                } catch (SQLException | ClassNotFoundException | ArrayIndexOutOfBoundsException ex) {
-                    ex.printStackTrace();
-                } finally {
-                    out.close();
-                }
-            }
-        %>
-    </textarea>
-</div>--%>
 
 <%
     String word = request.getParameter("search");
@@ -110,5 +84,14 @@
 %>
 <script src="js/bootstrap.min.js"></script>
 <script src="jquery/jquery-3.1.0.min.js"></script>
+<script src="jquery/jquery.highlight-search-terms.min.js"></script>
+
+<script>
+    $(function () {
+        $("body").highlightSearchTerms({
+            referrer: "http://www.google.com/search?q=වචනය"
+        });
+    });
+</script>
 </body>
 </html>
