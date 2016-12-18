@@ -12,12 +12,13 @@
     <meta charset="UTF-8">
     <title>References</title>
     <link href="css/bootstrap.min.css" rel="stylesheet">
-    <link href="css/navbar.css" rel="stylesheet">
 </head>
 <body>
 <%@include file="fragments/navbar.jsp"%>
 <br>
 <br>
 <br>
+
+<%@include file="fragments/footer.jsp"%>
 </body>
 </html>

@@ -17,7 +17,6 @@
     <title>Sinhala WordNet</title>
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <link href="css/searchbar.css" rel="stylesheet">
-    <link href="css/navbar.css" rel="stylesheet">
     <style type="text/css">
         .highlight {
             color: #000;

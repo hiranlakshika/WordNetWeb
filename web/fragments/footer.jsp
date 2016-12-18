@@ -6,10 +6,9 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<link href="css/footer.css" rel="stylesheet"/>
-
-<footer>
-    <div class="content container-fluid">
+<link href="css/sticky-footer.css" rel="stylesheet">
+<footer class="footer">
+    <div class="container">
         <div class="row">
             <div class="col-sm-6">
                 <p>Contact us:<span class="phone">(+94)70 201 7200, hiran@zoom.lk</span>
@@ -29,8 +28,5 @@
             </div>
             <!-- col-sm-6 -->
         </div>
-        <!-- row -->
     </div>
-    <!-- content container -->
 </footer>
-<!--footer-->

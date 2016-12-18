@@ -10,7 +10,6 @@
 <head>
     <title>Your suggestions</title>
     <link href="css/bootstrap.min.css" rel="stylesheet">
-    <link href="css/navbar.css" rel="stylesheet">
 </head>
 <body>
 <%@include file="fragments/navbar.jsp"%>
@@ -66,5 +65,6 @@
         </div>
     </section>
 </div>
+<%@include file="fragments/footer.jsp"%>
 </body>
 </html>
