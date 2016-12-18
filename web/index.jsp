@@ -24,8 +24,8 @@
         }
     </style>
 </head>
-<body>
-<%@include file="fragments/navbar.jsp"%>
+<body onload="highlightText()">
+<%@include file="fragments/navbar.jsp" %>
 <br>
 <br>
 <br>
@@ -47,6 +47,22 @@
         </div>
     </div>
 </form>
+
+
+<%@include file="fragments/footer.jsp" %>
+<script src="js/bootstrap.min.js"></script>
+<script src="jquery/jquery-3.1.0.min.js"></script>
+<script src="jquery/jquery.highlight-search-terms.min.js"></script>
+
+<script>
+    function highlightText() {
+        $(function () {
+            $("body").highlightSearchTerms({
+                referrer: "http://www.google.com/search?q=මෙහි"
+            });
+        });
+    }
+</script>
 <%
     String word = request.getParameter("search");
     if (word != null && word.length() > 1) {
@@ -85,21 +101,5 @@
         }
     }
 %>
-
-<%@include file="fragments/footer.jsp"%>
-
-<script src="js/bootstrap.min.js"></script>
-<script src="jquery/jquery-3.1.0.min.js"></script>
-<script src="jquery/jquery.highlight-search-terms.min.js"></script>
-
-<script>
-    function highlightText() {
-        $(function () {
-            $("body").highlightSearchTerms({
-                referrer: "http://www.google.com/search?q=වචනය"
-            });
-        });
-    }
-</script>
 </body>
 </html>
