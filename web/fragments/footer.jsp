@@ -23,6 +23,8 @@
                     <ul class="nav navbar-nav navbar-right">
                         <li><a href="https://github.com/hiranlakshika/WordNetWeb" target="_blank">View Source</a>
                         </li>
+                        <li><a href="#" target="_blank">Download Database</a>
+                        </li>
                     </ul>
                 </nav>
             </div>

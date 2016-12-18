@@ -47,7 +47,9 @@
         </div>
     </div>
 </form>
-
+<%
+    pageContext.setAttribute("word", request.getParameter("search"));
+%>
 
 <%@include file="fragments/footer.jsp" %>
 <script src="js/bootstrap.min.js"></script>
@@ -58,7 +60,7 @@
     function highlightText() {
         $(function () {
             $("body").highlightSearchTerms({
-                referrer: "http://www.google.com/search?q=මෙහි"
+                referrer: "http://www.google.com/search?q=${pageScope.word}"
             });
         });
     }
@@ -80,20 +82,21 @@
             Statement stm = connection.createStatement();
             ResultSet rst = stm.executeQuery(sql);
             out.print("<div class=\"form-group col-md-12\">\n" +
-                    "    <label for=\"sentence\">උදාහරණ වාක්\u200Dය:</label>\n" +
-                    "    <textarea class=\"form-control\" rows=\"10\" id=\"sentence\">");
-            int count = 0;
+                    "    <label>උදාහරණ වාක්\u200Dය:</label> <br>");
+            int sentencesCount = 0;
             while (rst.next()) {
-                ++count;
-                if (count > 15) {
+                if (rst.getString("text").length() < 150 && !rst.getString("text").trim().isEmpty()) {
+                    sentencesCount++;
+                    out.println(sentencesCount + ". " + rst.getString("text") + ".<br>");
+                }
+                if (sentencesCount > 11) {
                     break;
                 }
-                if (rst.getString("text").length() < 150 && !rst.getString("text").trim().isEmpty()) {
-                    out.println(rst.getString("text") + ".");
-                }
             }
-            out.print("</textarea>\n" +
-                    "</div>");
+            if (sentencesCount<1){
+                out.print("ඔබ ඇතුලත් කළ වචනය සඳහා උදාහරණ වාක්\u200Dය සොයා ගත නොහැක");
+            }
+            out.print("</div>");
         } catch (SQLException | ClassNotFoundException | ArrayIndexOutOfBoundsException ex) {
             ex.printStackTrace();
         } finally {
@@ -101,5 +104,6 @@
         }
     }
 %>
+
 </body>
 </html>
