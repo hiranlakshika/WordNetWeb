@@ -13,21 +13,7 @@
     <link href="css/navbar.css" rel="stylesheet">
 </head>
 <body>
-<div class="menu">
-    <div class="container-fluid">
-        <div class="navbar-header">
-            <a href="index.jsp">Sinhala WordNet</a>
-        </div>
-        <div>
-            <ul class="nav navbar-nav navbar-left">
-                <li><a href="index.jsp"><span class="glyphicon glyphicon-home"></span> Home</a></li>
-                <li><a href="suggestions.jsp"><span class="glyphicon glyphicon-hand-up"></span> Suggestions</a></li>
-                <li><a href="about.html"><span class="glyphicon glyphicon-info-sign"></span> About</a></li>
-                <li><a href="references.html"><span class="glyphicon glyphicon-tags"></span> References</a></li>
-            </ul>
-        </div>
-    </div>
-</div>
+<%@include file="fragments/navbar.jsp"%>
 <div class="container">
     <section>
         <div class="page-header" id="contact">
@@ -36,30 +22,30 @@
 
         <div class="row">
             <div class="col-lg-8">
-                <form action="#" class="form-horizontal" method="post">
+                <form action="suggestions.jsp" class="form-horizontal">
                     <div class="form-group">
                         <label for="user-name" class="col-lg-2 control-label">Name</label>
                         <div class="col-lg-10">
                             <input type="text" class="form-control" id="user-name" placeholder="Enter you name"
                                    name="name" required>
                         </div>
-                    </div><!-- End form group -->
+                    </div>
 
                     <div class="form-group">
                         <label for="user-email" class="col-lg-2 control-label">Email</label>
                         <div class="col-lg-10">
-                            <input type="text" class="form-control" id="user-email"
+                            <input type="email" class="form-control" id="user-email"
                                    placeholder="Enter you Email Address" name="email" required>
                         </div>
-                    </div><!-- End form group -->
+                    </div>
 
                     <div class="form-group">
                         <label for="user-url" class="col-lg-2 control-label">Your Website</label>
                         <div class="col-lg-10">
-                            <input type="text" class="form-control" id="user-url" placeholder="If you have Any."
+                            <input type="url" class="form-control" id="user-url" placeholder="If you have Any."
                                    name="web">
                         </div>
-                    </div><!-- End form group -->
+                    </div>
 
                     <div class="form-group">
                         <label for="user-message" class="col-lg-2 control-label">Your Message</label>
@@ -68,18 +54,16 @@
                                               cols="20" rows="10" placeholder="Enter your Message" name="message"
                                               required></textarea>
                         </div>
-                    </div><!-- End form group -->
+                    </div>
 
                     <div class="form-group">
                         <div class="col-lg-10 col-lg-offset-2">
                             <button type="submit" class="btn btn-primary">Submit</button>
                         </div>
                     </div>
-
-
                 </form>
             </div>
-        </div><!-- End the row -->
+        </div>
     </section>
 </div>
 </body>

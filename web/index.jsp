@@ -25,23 +25,8 @@
         }
     </style>
 </head>
-<body onload="highlightText()">
-
-<div class="menu">
-    <div class="container-fluid">
-        <div class="navbar-header">
-            <a href="index.jsp">Sinhala WordNet</a>
-        </div>
-        <div>
-            <ul class="nav navbar-nav navbar-left">
-                <li><a href="index.jsp"><span class="glyphicon glyphicon-home"></span> Home</a></li>
-                <li><a href="suggestions.jsp"><span class="glyphicon glyphicon-hand-up"></span> Suggestions</a></li>
-                <li><a href="about.html"><span class="glyphicon glyphicon-info-sign"></span> About</a></li>
-                <li><a href="references.html"><span class="glyphicon glyphicon-tags"></span> References</a></li>
-            </ul>
-        </div>
-    </div>
-</div>
+<body>
+<%@include file="fragments/navbar.jsp"%>
 <br>
 <br>
 <br>
@@ -101,6 +86,9 @@
         }
     }
 %>
+
+<%@include file="fragments/footer.jsp"%>
+
 <script src="js/bootstrap.min.js"></script>
 <script src="jquery/jquery-3.1.0.min.js"></script>
 <script src="jquery/jquery.highlight-search-terms.min.js"></script>
