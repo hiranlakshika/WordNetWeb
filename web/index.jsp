@@ -48,7 +48,7 @@
     </div>
 </form>
 <%
-    pageContext.setAttribute("word", request.getParameter("search"));
+    pageContext.setAttribute("word", request.getParameter("search").replaceAll("[ ]",""));
 %>
 
 <%@include file="fragments/footer.jsp" %>
@@ -75,7 +75,7 @@
                 "    <input type=\"text\" class=\"form-control\" id=\"baseform\" value=\"" + baseWord + "\">\n" +
                 "</div>");
 
-        String sql = "SELECT * FROM `sentence` WHERE text like '" + "%" + word + "%" + "'";
+        String sql = "SELECT * FROM `sentence` WHERE text like '" + "%" +" "+ word.replaceAll("[ ]","") + "%" + "'";
 
         try {
             Connection connection = DBConnection.getConnection();
@@ -93,7 +93,7 @@
                     break;
                 }
             }
-            if (sentencesCount<1){
+            if (sentencesCount < 1) {
                 out.print("ඔබ ඇතුලත් කළ වචනය සඳහා උදාහරණ වාක්\u200Dය සොයා ගත නොහැක");
             }
             out.print("</div>");

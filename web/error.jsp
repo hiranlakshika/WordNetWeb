@@ -11,6 +11,6 @@
     <title>Error</title>
 </head>
 <body>
-<h1>Oops! Something went wrong.</h1>
+<h1>Oops! Requested page is not found.</h1>
 </body>
 </html>
