@@ -11,4 +11,8 @@
         <servlet-name>search</servlet-name>
         <url-pattern>/search</url-pattern>
     </servlet-mapping>
+    <error-page>
+        <location>/error.jsp</location>
+        <error-code>404</error-code>
+    </error-page>
 </web-app>
