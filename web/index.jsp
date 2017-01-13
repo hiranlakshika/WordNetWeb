@@ -48,7 +48,10 @@
     </div>
 </form>
 <%
-    pageContext.setAttribute("word", request.getParameter("search").replaceAll("[ ]",""));
+    if (request.getParameter("search") != null) {
+        pageContext.setAttribute("word", request.getParameter("search").replaceAll("[ ]", ""));
+    }
+
 %>
 
 <%@include file="fragments/footer.jsp" %>
@@ -75,7 +78,7 @@
                 "    <input type=\"text\" class=\"form-control\" id=\"baseform\" value=\"" + baseWord + "\">\n" +
                 "</div>");
 
-        String sql = "SELECT * FROM `sentence` WHERE text like '" + "%" +" "+ word.replaceAll("[ ]","") + "%" + "'";
+        String sql = "SELECT * FROM `sentence` WHERE text like '" + "%" + " " + word.replaceAll("[ ]", "") + "%" + "'";
 
         try {
             Connection connection = DBConnection.getConnection();

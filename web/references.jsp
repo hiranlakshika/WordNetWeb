@@ -14,11 +14,34 @@
     <link href="css/bootstrap.min.css" rel="stylesheet">
 </head>
 <body>
-<%@include file="fragments/navbar.jsp"%>
+<%@include file="fragments/navbar.jsp" %>
 <br>
 <br>
 <br>
 
-<%@include file="fragments/footer.jsp"%>
+<h3 style="text-align: center">The following web sites are used to extract the text content for this project.</h3>
+<div style="text-align: center">
+
+    http://www.ada.lk <br>
+    http://www.lankadeepa.lk<br>
+    http://nethnews.lk<br>
+    http://www.gossipking.lk<br>
+    http://www.divaina.com<br>
+    https://www.dinamina.lk<br>
+    http://www.lakbima.lk<br>
+    http://sinhala.adaderana.lk<br>
+    https://lankacnews.com<br>
+    http://www.bbc.com/sinhala<br>
+    http://www.sinhala.srilankamirror.com<br>
+    http://news.tharunaya.us<br>
+    http://www.rivira.lk/online<br>
+    http://www.silumina.lk<br>
+    http://www.mawbima.lk<br>
+    http://ravaya.lk<br>
+    http://zoom.lk/
+
+</div>
+
+<%@include file="fragments/footer.jsp" %>
 </body>
 </html>
