@@ -1,4 +1,7 @@
-<%--
+<%@ page import="database.DBConnection" %>
+<%@ page import="java.sql.Connection" %>
+<%@ page import="java.sql.SQLException" %>
+<%@ page import="java.sql.Statement" %><%--
   Created by IntelliJ IDEA.
   User: hiran
   Date: 12/12/16
@@ -12,7 +15,7 @@
     <link href="css/bootstrap.min.css" rel="stylesheet">
 </head>
 <body>
-<%@include file="fragments/navbar.jsp"%>
+<%@include file="fragments/navbar.jsp" %>
 <div class="container">
     <section>
         <div class="page-header" id="contact">
@@ -67,6 +70,28 @@
 </div>
 <br>
 <br>
-<%@include file="fragments/footer.jsp"%>
+<%@include file="fragments/footer.jsp" %>
+<%
+    String name = request.getParameter("name");
+    String email = request.getParameter("email");
+    String web = request.getParameter("web");
+    String message = request.getParameter("message");
+
+    if (name != null && email != null && message != null) {
+        if (web == null) {
+            web = "";
+        }
+        String sql = "insert into suggestions values('" + name + "','" + email + "','" + web + "','" + message + "')";
+        try {
+            Connection connection = DBConnection.getConnection();
+            Statement stm = connection.createStatement();
+            stm.executeUpdate(sql);
+            out.print("<script>alert(\"Thanks for adding your feedback!\");</script>");
+        } catch (SQLException | ClassNotFoundException e) {
+            e.printStackTrace();
+        }
+    }
+
+%>
 </body>
 </html>

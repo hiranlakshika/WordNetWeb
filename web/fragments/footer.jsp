@@ -23,7 +23,7 @@
                     <ul class="nav navbar-nav navbar-right">
                         <li><a href="https://github.com/hiranlakshika/WordNetWeb" target="_blank">View Source</a>
                         </li>
-                        <li><a href="#" target="_blank">Download Database</a>
+                        <li><a href="http://www.mediafire.com/file/o78r9tp7o913bwm/SinhalaWordNet.sql" target="_blank">Download Database</a>
                         </li>
                     </ul>
                 </nav>
